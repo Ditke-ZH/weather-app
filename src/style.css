@@ -1,0 +1,82 @@
+div {
+  display: block;
+}
+
+.weather-app-wrapper {
+  margin: 30px auto;
+  max-width: 600px;
+  box-sizing: border-box;
+}
+.weather-app {
+  background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
+  border: 1px solid #dadde1;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px 2px #dadde1;
+  padding: 20px;
+  margin-bottom: 15px;
+}
+
+.row {
+  padding-top: 20px;
+  color: white;
+  text-align: center;
+}
+.search-icon {
+  text-align: center;
+}
+.location-icon {
+  text-align: center;
+}
+
+h1 {
+  text-align: center;
+  color: white;
+  font-size: 70px;
+}
+h2 {
+  text-align: center;
+  color: white;
+  font-size: 90px;
+}
+p {
+  text-align: center;
+  color: white;
+  font-size: 20px;
+}
+
+.date {
+  font-size: 25px;
+}
+
+.air-property {
+  padding-bottom: 20px;
+}
+
+.middle-icon {
+  font-size: 25px;
+}
+
+hr {
+  color: white;
+  position: relative;
+  height: 10px;
+  background: white;
+  border-radius: 5px;
+}
+
+.weekdays {
+  font-size: 20px;
+}
+
+.small-icon {
+  font-size: 30px;
+}
+
+.small-temperature {
+  font-size: 10px;
+}
+
+.footer {
+  font-size: 12px;
+  padding-top: 40px;
+}
