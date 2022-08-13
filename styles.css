@@ -70,3 +70,9 @@ hr {
   font-size: 12px;
   padding-top: 40px;
 }
+a:link {
+  color: white;
+}
+a:hover {
+  color: blue;
+}
