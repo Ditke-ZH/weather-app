@@ -1,8 +1,12 @@
+body {
+  color: white;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
 div {
   display: block;
 }
 .weather-app-wrapper {
-  margin: 30px auto;
+  margin: 20px auto;
   max-width: 600px;
   box-sizing: border-box;
 }
@@ -16,7 +20,6 @@ div {
 }
 .row {
   padding-top: 20px;
-  color: white;
   text-align: center;
 }
 .search-icon {
@@ -25,33 +28,35 @@ div {
 .location-icon {
   text-align: center;
 }
-
 h1 {
   text-align: center;
-  color: white;
-  font-size: 70px;
+  font-size: 50px;
+  padding: 0px 0px;
+  margin-bottom: 0px;
 }
 h2 {
   text-align: center;
-  color: white;
-  font-size: 90px;
+  font-size: 50px;
+  padding: 0px;
+  margin-bottom: 0px;
 }
 p {
   text-align: center;
-  color: white;
-  font-size: 20px;
+  font-size: 18px;
+  margin: 0px 0px;
 }
-.date {
+.current-date {
   font-size: 25px;
+  padding-bottom: 0px;
+  margin: 0px 0px;
 }
-.air-property {
-  padding-bottom: 20px;
+.row-2 {
+  padding: 0px 0px;
 }
 .middle-icon {
   font-size: 25px;
 }
 hr {
-  color: white;
   position: relative;
   height: 10px;
   background: white;
@@ -74,5 +79,5 @@ a:link {
   color: white;
 }
 a:hover {
-  color: blue;
+  color: black;
 }

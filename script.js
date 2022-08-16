@@ -98,4 +98,4 @@ currentDate.innerHTML = `${day}, ${date}. ${month} ${year}`;
 let currentTime = document.querySelector("#current-time");
 currentTime.innerHTML = `${hours}:${minutes}`;
 
-searchCity("Zürich");
+searchCity("Zurich");
