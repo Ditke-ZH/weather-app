@@ -6,6 +6,10 @@ function displayWeatherCondition(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+  let sunriseUnix = response.data.sys.sunrise;
+  let sunriseFormatTime = getLocalTime(sunriseUnix, timezone);
+  document.querySelector("#sunrise").innerHTML = sunriseFormatTime;
+  document.querySelector("#sunset").innerHTML = response.data.sys.sunset * 1000;
 }
 
 function searchCity(city) {
