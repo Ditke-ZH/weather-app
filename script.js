@@ -1,15 +1,37 @@
 function displayWeatherCondition(response) {
-  let temperature = Math.round(response.data.main.temp);
+  celsiusTemperature = response.data.main.temp;
+  let temperature = Math.round(celsiusTemperature);
   document.querySelector("#city").innerHTML = response.data.name;
   document.querySelector("#temperature").innerHTML = `${temperature}°C`;
   document.querySelector("#humidity").innerHTML = response.data.main.humidity;
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
+
   let sunriseUnix = response.data.sys.sunrise;
-  let sunriseFormatTime = getLocalTime(sunriseUnix, timezone);
-  document.querySelector("#sunrise").innerHTML = sunriseFormatTime;
-  document.querySelector("#sunset").innerHTML = response.data.sys.sunset * 1000;
+  let sunriseUnixMilliseconds = sunriseUnix * 1000;
+  let dateSunrise = new Date(sunriseUnixMilliseconds);
+  const sunriseDateFormat = dateSunrise.toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+  });
+  document.querySelector("#sunrise").innerHTML = sunriseDateFormat;
+
+  let sunsetUnix = response.data.sys.sunset;
+  let sunsetUnixMilliseconds = sunsetUnix * 1000;
+  let dateSunset = new Date(sunsetUnixMilliseconds);
+  const sunsetDateFormat = dateSunset.toLocaleString("en-US", {
+    hour: "numeric",
+    minute: "numeric",
+  });
+  document.querySelector("#sunset").innerHTML = sunsetDateFormat;
+
+  let iconElement = document.querySelector("#main-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 function searchCity(city) {
@@ -47,19 +69,20 @@ currentTemperatureButton.addEventListener("click", getCurrentLocation);
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  let temperature = temperatureElement.innerHTML;
-  temperature = Number(temperature);
-  temperatureElement.innerHTML = 82;
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
+  temperatureElement.innerHTML = `${Math.round(fahrenheitTemperature)}°F`;
 }
-
-let fahrenheit = document.querySelector("#fahrenheit");
-fahrenheit.addEventListener("click", convertToFahrenheit);
 
 function convertToCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = 28;
+  temperatureElement.innerHTML = `${Math.round(celsiusTemperature)}°C`;
 }
+
+let celsiusTemperature = null;
+
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", convertToFahrenheit);
 
 let celsius = document.querySelector("#celsius");
 celsius.addEventListener("click", convertToCelsius);
