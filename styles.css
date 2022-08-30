@@ -60,6 +60,7 @@ p {
 .row-2 {
   padding: 0px 0px;
 }
+
 .middle-icon {
   font-size: 25px;
 }
@@ -68,6 +69,12 @@ hr {
   height: 10px;
   background: white;
   border-radius: 5px;
+}
+.weather-forecast {
+  font-size: 25px;
+  margin-top: 20px;
+  text-align: center;
+  color: white;
 }
 .weekdays {
   font-size: 20px;
