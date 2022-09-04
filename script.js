@@ -46,12 +46,10 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.daily;
-
   let forecastElement = document.querySelector("#forecast");
-
   let forecastHTML = `<div class="row">`;
   forecast.forEach(function (forecastDay, index) {
-    if (index > 0 && index < 7) {
+    if (index < 6) {
       forecastHTML =
         forecastHTML +
         `
@@ -66,10 +64,10 @@ function displayForecast(response) {
           class="weather-forecast-icon"
         />
         <div class="weather-forecast-temperatures">
-          <span class="weather-forecast-temperature-max" id="temperature"> ${Math.round(
+          <span class="weather-forecast-temperature-max"> ${Math.round(
             forecastDay.temp.max
           )}° |</span>
-          <span class="weather-forecast-temperature-min" id="temperature"> ${Math.round(
+          <span class="weather-forecast-temperature-min"> ${Math.round(
             forecastDay.temp.min
           )}° </span>
         </div>
@@ -102,6 +100,13 @@ function displayWeatherCondition(response) {
     response.data.wind.speed
   );
 
+  let iconElement = document.querySelector("#main-icon");
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", response.data.weather[0].description);
+
   let sunriseUnix = response.data.sys.sunrise;
   let sunriseUnixMilliseconds = sunriseUnix * 1000;
   let dateSunrise = new Date(sunriseUnixMilliseconds);
@@ -119,13 +124,6 @@ function displayWeatherCondition(response) {
     minute: "numeric",
   });
   document.querySelector("#sunset").innerHTML = sunsetDateFormat;
-
-  let iconElement = document.querySelector("#main-icon");
-  iconElement.setAttribute(
-    "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
-  iconElement.setAttribute("alt", response.data.weather[0].description);
 
   getForecast(response.data.coord);
 }
@@ -159,6 +157,7 @@ function getCurrentLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(searchLocation);
 }
+
 let currentTemperatureButton = document.querySelector("#location-icon");
 currentTemperatureButton.addEventListener("click", getCurrentLocation);
 
